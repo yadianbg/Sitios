@@ -1,0 +1,19 @@
+{% extends '../../layout.html' %}
+{% block content %}
+    <div style="display: flex; flex-direction: column; align-content: center; align-items: center; align-self: center">
+        <h4>Datos del Sitio: {{ object.nombre }}</h4>
+        {% if object.foto %}
+        <img src="{{ object.foto.url }}" style="width: 20%">
+        {% endif %}
+        <h5>Dirección: {{ object.direccion }}</h5>
+        <h5>Provincia: {{ object.provincia }}</h5>
+        <h5>Tipo: {{ object.tipo }}</h5>
+        <h5>Capacidad: {{ object.capacidad }} Personas</h5>
+        <h5>Aperturado: {{ object.fechaApertura }}</h5>
+        {% if object.disponible %}
+        <h5>Disponible</h5>
+        {% else %}
+        <h5>Cerrado</h5>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends '../../layout.html' %}
+{% block content %}
+    <form method="post">{% csrf_token %}
+        <p>¿Desea eliminar el tipo de sitio: "{{ object }}"?</p>
+            <input type="submit" value="Confirmar">
+    </form>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends '../../layout.html' %}
+{% block content %}
+    <div style="display: flex; flex-direction: column;">
+        <h3>Datos de la Provincia</h3>
+        <ul>
+            <li>Código: {{ object.codigo }}</li>
+            <li>Nombre: {{ object.nombre }}</li>
+        </ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends './layout.html' %}
+{% block content %}
+    <div style="margin: 0 auto; width: 80%">
+        <h5>
+            Bienvenido
+        </h5><br>
+        <h6>
+            Sitios de Interés Turístico le brinda un listado de lugares interesantes que usted debe visitar.
+        </h6>
+        <p>
+            Proyecto realizado en Python usando el framework Django y la arquitectura MVT (Modelo Vista Template).<br>
+            Consta de 3 entidades relacionadas:
+        </p>
+        <div>
+            <ul>
+                <li>
+                    Tipos de sitio
+                </li>
+                <li>
+                    Provincias
+                </li>
+                <li>
+                    Sitios de interés turístico (Muestra información del tipo de sitio y la provincia donde se encuentra)
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends '../../layout.html' %}
+{% block content %}
+    <h4>Listado de Provincias</h4>
+    <a href="{% url 'provincia_create' %}" class="btn btn-dark">Añadir</a>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Código</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Acción</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for object in objects %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ object.codigo }}</td>
+                <td>{{ object.nombre }}</td>
+                <td>
+                    <div style="display: flex;flex: auto; flex-direction: row; width: 50%;">
+                        <a class="btn btn-warning" href="{% url 'provincia_update' object.id %}"><i class="bi bi-pencil-square"></i></a>
+                        <a class="btn btn-danger" href="{% url 'provincia_delete' object.id %}"><i class="bi bi-trash"></i></a>
+                        <a class="btn btn-info" href="{% url 'provincia_details' object.id %}"><i class="bi bi-eye"></i></a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
