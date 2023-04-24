@@ -3,40 +3,40 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from ..Serialization import TipoSitioSerialize
-from ...models import TipoSitio
+from ..Serialization import ProvinciaSerialize
+from ...models import Provincia
 from rest_framework import status, viewsets, generics
 
-delete_msg = 'Tipo de sitio eliminado correctamente.'
+delete_msg = 'Provincia eliminada correctamente.'
 
 # Metodo
 @csrf_exempt
-def tipoSitio_list(request):
+def provincia_list(request):
     if request.method == 'GET':
-        queryset = TipoSitio.objects.all()
-        serializer = TipoSitioSerialize.TipoSitioModelSerializer(queryset, many=True)
+        queryset = Provincia.objects.all()
+        serializer = ProvinciaSerialize.ProvinciaModelSerializer(queryset, many=True)
         return JsonResponse(serializer.data, safe=False)
 
 
 # Generic View
-class TipoSitioList(generics.ListCreateAPIView):
-    queryset = TipoSitio.objects.all()
-    serializer_class = TipoSitioSerialize.TipoSitioModelSerializer
+class ProvinciaList(generics.ListCreateAPIView):
+    queryset = Provincia.objects.all()
+    serializer_class = ProvinciaSerialize.ProvinciaModelSerializer
 
-class TipoSitioDetails(generics.RetrieveUpdateDestroyAPIView):
-    queryset = TipoSitio.objects.all()
-    serializer_class = TipoSitioSerialize.TipoSitioModelSerializer
+class ProvinciaDetails(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Provincia.objects.all()
+    serializer_class = ProvinciaSerialize.ProvinciaModelSerializer
     
             
 # API View (get, post)
-class TipoSitioAPI(APIView):
+class ProvinciaAPI(APIView):
     def get(self, request, format=None):
-        queryset = TipoSitio.objects.all()
-        serializer = TipoSitioSerialize.TipoSitioModelSerializer(queryset, many=True)
+        queryset = Provincia.objects.all()
+        serializer = ProvinciaSerialize.ProvinciaModelSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, format=None):
-        serializer = TipoSitioSerialize.TipoSitioModelSerializer(data=request.data)
+        serializer = ProvinciaSerialize.ProvinciaModelSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -44,56 +44,56 @@ class TipoSitioAPI(APIView):
 
 
 # API View (get, put, delete)
-class TipoSitioAPID(APIView):
+class ProvinciaAPID(APIView):
     def get(self, request, pk, format=None):
-        queryset = TipoSitio.objects.get(id=pk)
-        serializer = TipoSitioSerialize.TipoSitioModelSerializer(queryset, many=False)
+        queryset = Provincia.objects.get(id=pk)
+        serializer = ProvinciaSerialize.ProvinciaModelSerializer(queryset, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def put(self, request, pk, format=None):
-        serializer = TipoSitioSerialize.TipoSitioModelSerializer(data=request.data)
+        serializer = ProvinciaSerialize.ProvinciaModelSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        TipoSitio.objects.get(id=pk).delete()
+        Provincia.objects.get(id=pk).delete()
         return Response(delete_msg, status=status.HTTP_200_OK)
 
 
 # ViewSet
-class TipoSitioView(viewsets.ViewSet):
+class ProvinciaView(viewsets.ViewSet):
     def list(self, request):
-        queryset = TipoSitio.objects.all()
-        serializer = TipoSitioSerialize.TipoSitioModelSerializer(queryset, many=True)
+        queryset = Provincia.objects.all()
+        serializer = ProvinciaSerialize.ProvinciaModelSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def create(self, request, ):
-        serializer = TipoSitioSerialize.TipoSitioModelSerializer(data=request.data)
+        serializer = ProvinciaSerialize.ProvinciaModelSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def retrieve(self, request, pk=None):
-        queryset = TipoSitio.objects.get(id=pk)
-        serializer = TipoSitioSerialize.TipoSitioModelSerializer(queryset, many=False)
+        queryset = Provincia.objects.get(id=pk)
+        serializer = ProvinciaSerialize.ProvinciaModelSerializer(queryset, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def update(self, request, pk=None):
-        serializer = TipoSitioSerialize.TipoSitioModelSerializer(data=request.data)
+        serializer = ProvinciaSerialize.ProvinciaModelSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk=None):
-        TipoSitio.objects.get(id=pk).delete()
+        Provincia.objects.get(id=pk).delete()
         return Response(delete_msg, status=status.HTTP_200_OK)
 
 
 # Model ViewSet
-class TipoSitioModelView(viewsets.ModelViewSet):
-    queryset = TipoSitio.objects.all()
-    serializer_class = TipoSitioSerialize.TipoSitioModelSerializer
+class ProvinciaModelView(viewsets.ModelViewSet):
+    queryset = Provincia.objects.all()
+    serializer_class = ProvinciaSerialize.ProvinciaModelSerializer
