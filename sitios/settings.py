@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'dal',
     'dal_select2',
+    'rest_framework',
+    'django_filters',
     'sitiosApp',
 ]
 
@@ -52,6 +54,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ]
+}
 
 ROOT_URLCONF = 'sitios.urls'
 TEMPLATE_DIR = BASE_DIR / 'templates'

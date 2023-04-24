@@ -25,6 +25,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # configured the urls
     path('', include('sitiosApp.urls')),
+    path('api-auth/', include('rest_framework.urls')),
+    path('api/', include('sitiosApp.API.urls')),
 ]
 
 # Añadir archivos estáticos a la url
