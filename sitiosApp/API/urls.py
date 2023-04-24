@@ -3,12 +3,12 @@ from django.urls import path, re_path, include
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register(r'tipoSitioApiV', TipoSitioController.TipoSitioView, basename='tipoSitioApiV')
-router.register(r'tipoSitioApiMV', TipoSitioController.TipoSitioModelView, basename='tipoSitioApiMV')
-router.register(r'provinciaApiV', ProvinciaController.ProvinciaView, basename='provinciaApiV')
-router.register(r'provinciaApiMV', ProvinciaController.ProvinciaModelView, basename='provinciaApiMV')
-router.register(r'sitioApiV', SitioController.SitioView, basename='sitioApiV')
-router.register(r'sitioApiMV', SitioController.SitioModelView, basename='sitioApiMV')
+router.register(r'TipoSitioApiV', TipoSitioController.TipoSitioView, basename='tipoSitioApiV')
+router.register(r'TipoSitioApiMV', TipoSitioController.TipoSitioModelView, basename='tipoSitioApiMV')
+router.register(r'ProvinciaApiV', ProvinciaController.ProvinciaView, basename='provinciaApiV')
+router.register(r'ProvinciaApiMV', ProvinciaController.ProvinciaModelView, basename='provinciaApiMV')
+router.register(r'SitioApiV', SitioController.SitioView, basename='sitioApiV')
+router.register(r'SitioApiMV', SitioController.SitioModelView, basename='sitioApiMV')
 
 urlpatterns = [
     # Tipo de sitio
