@@ -28,7 +28,7 @@ urlpatterns = [
     re_path('sitio/(?P<pk>[0-9a-f]{32})', SitioController.SitioDetails.as_view(), name='api_sitio_details'),
     path('sitioApi/', SitioController.SitioAPI.as_view(), name='apiV_sitio_list'),
     re_path('sitioApi/(?P<pk>[0-9a-f]{32})', SitioController.SitioAPID.as_view(), name='apiV_sitio_details'),
-
+    
     # GENERIC Urls
     path('', include(router.urls))
 ]
